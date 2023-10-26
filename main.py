@@ -1,16 +1,23 @@
-# This is a sample Python script.
+# James Chau
+def encode_rle(flat_data):
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+    count = 1
+    result = []
 
+    for x, item in enumerate(flat_data):
+        if x == 0:
+            continue
+        elif item == flat_data[x - 1]:
+            count += 1
+            if count >= 15:
+                result.append(count)
+                result.append((flat_data[x - 1]))
+                count = 0
+        else:
+            result.append(count)
+            result.append((flat_data[x - 1]))
+            count = 1
+            result.append(count)
+            result.append((flat_data[len(flat_data) - 1]))
+    return result
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-mmnnijmnihnhub = 1
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
