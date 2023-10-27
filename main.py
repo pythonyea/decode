@@ -21,3 +21,17 @@ def encode_rle(flat_data):
             result.append((flat_data[len(flat_data) - 1]))
     return result
 
+def decode(password):
+    encoded_num = ''
+    for i in range(8):
+
+        if str(int(password[i])) == '2':
+            encoded_num += '9'
+        elif str(int(password[i])) == '1':
+            encoded_num += '8'
+        elif str(int(password[i])) == '0':
+            encoded_num += '7'
+        else:
+            encoded_num += str(int(password[i]) - 3)
+
+    return encoded_num
