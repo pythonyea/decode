@@ -21,6 +21,7 @@ def encode_rle(flat_data):
             result.append((flat_data[len(flat_data) - 1]))
     return result
 
+#Decode function by Abdullah Islam
 def decode(password):
     encoded_num = ''
     for i in range(8):
