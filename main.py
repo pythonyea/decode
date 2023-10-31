@@ -1,24 +1,15 @@
 # James Chau
-def encode_rle(flat_data):
-
-    count = 1
-    result = []
-
-    for x, item in enumerate(flat_data):
-        if x == 0:
-            continue
-        elif item == flat_data[x - 1]:
-            count += 1
-            if count >= 15:
-                result.append(count)
-                result.append((flat_data[x - 1]))
-                count = 0
+def encode(password):
+    result = ''
+    for i in password:
+        if i == '7':
+            result += '0'
+        elif i == '8':
+            result += '1'
+        elif i == '9':
+            result += '2'
         else:
-            result.append(count)
-            result.append((flat_data[x - 1]))
-            count = 1
-            result.append(count)
-            result.append((flat_data[len(flat_data) - 1]))
+            result += str(int(i) + 3)
     return result
 
 #Decode function by Abdullah Islam
@@ -36,3 +27,25 @@ def decode(password):
             encoded_num += str(int(password[i]) - 3)
 
     return encoded_num
+
+program = True
+while program:
+    print("""Menu
+-------------
+1. Encode
+2. Decode
+3. Quit\n""")
+    option = int(input("Please enter an option: "))
+    if option == 1:
+        password = input("Please enter your password to encode: ")
+        password = encode(password)
+        print("Your password has been encoded and stored!\n")
+
+    if option == 2:
+        try:
+            print(f"The encoded password is {password}, and the original password is {decode(password)}.\n")
+        except NameError:
+            print("No password stored!\n")
+
+    if option == 3:
+        exit()
